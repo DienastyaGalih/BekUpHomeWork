@@ -14,9 +14,9 @@
             <?php
             $i = 1;
             echo "<tr>";
-            echo "<td>Sr#</td>";
-            echo "<td>Roll No.</td>";
+            echo "<td>No</td>";
             echo "<td>Name</td>";
+            echo "<td>Nomor pegawai</td>";
             echo "<td>Edit</td>";
             echo "<td>Delete</td>";
             echo "<tr>";
