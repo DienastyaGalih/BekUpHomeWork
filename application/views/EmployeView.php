@@ -17,8 +17,11 @@
             echo "<td>No</td>";
             echo "<td>Name</td>";
             echo "<td>Nomor pegawai</td>";
-            echo "<td>Edit</td>";
+            echo "<td>Phone</td>";
             echo "<td>City</td>";
+            echo "<td>Potition</td>";
+            echo "<td>Kelamin</td>";
+            echo "<td>Edit</td>";
             echo "<td>Delete</td>";
             echo "<tr>";
             
@@ -28,24 +31,16 @@
                 echo "<td>" . $i++ . "</td>";
                 echo "<td>" . $r->name . "</td>";
                 echo "<td>" . $r->id . "</td>";
+                echo "<td>" . $r->phone . "</td>";
                 echo "<td>" . $r->city . "</td>";
+                echo "<td>" . $r->potition . "</td>";
+                echo "<td>" . $r->sex . "</td>";
                 echo "<td><a href = '" . base_url() . "index.php/stud/edit/"
                 . $r->phone . "'>Edit</a></td>";
                 echo "<td><a href = '" . base_url() . "index.php/stud/delete/"
                 . $r->phone . "'>Delete</a></td>";
                 echo "<tr>";
             }
-//            foreach ($records as $r) {
-//                echo "<tr>";
-//                echo "<td>" . $i++ . "</td>";
-//                echo "<td>" . $r->nama . "</td>";
-//                echo "<td>" . $r->id_pegawai . "</td>";
-//                echo "<td><a href = '" . base_url() . "index.php/stud/edit/"
-//                . $r->no_telp . "'>Edit</a></td>";
-//                echo "<td><a href = '" . base_url() . "index.php/stud/delete/"
-//                . $r->no_telp . "'>Delete</a></td>";
-//                echo "<tr>";
-//            }
             ?>
         </table> 
 

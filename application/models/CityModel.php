@@ -20,14 +20,13 @@ class CityModel extends CI_Model {
         $this->load->database();
     }
 
+    /**
+     * 
+     * @param type $id of city in table kota
+     * @return type return name of city
+     */
     function getCity($id) {
         $query = $this->db->query("SELECT nama as name FROM kota WHERE id=$id");
-
-  
-//        foreach ($query->result() as $row) {
-//            echo $row->name;
-//        }
-        
         return   $query->result()[0]->name; ;
     }
 
