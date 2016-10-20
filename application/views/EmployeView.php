@@ -18,6 +18,7 @@
             echo "<td>Name</td>";
             echo "<td>Nomor pegawai</td>";
             echo "<td>Edit</td>";
+            echo "<td>City</td>";
             echo "<td>Delete</td>";
             echo "<tr>";
             
@@ -27,6 +28,7 @@
                 echo "<td>" . $i++ . "</td>";
                 echo "<td>" . $r->name . "</td>";
                 echo "<td>" . $r->id . "</td>";
+                echo "<td>" . $r->city . "</td>";
                 echo "<td><a href = '" . base_url() . "index.php/stud/edit/"
                 . $r->phone . "'>Edit</a></td>";
                 echo "<td><a href = '" . base_url() . "index.php/stud/delete/"

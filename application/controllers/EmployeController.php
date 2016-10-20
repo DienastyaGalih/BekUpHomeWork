@@ -11,7 +11,7 @@
  *
  * @author User
  */
-class Employes extends CI_Controller {
+class EmployeController extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -20,19 +20,28 @@ class Employes extends CI_Controller {
     }
 
     public function index() {
-        $query = $this->db->get("pegawai");
-        $data['records'] = $query->result();
-
+        
+        
+        $this->load->model("CityModel");
+        
+        
+        
+//        $query = $this->db->get("pegawai");
+//        $data['records'] = $query->result();
+//
         $employe['employe'][]=array();
-        $count = 0;
-        foreach ($query->result() as $row) {
-            $employe['employe'][$count++] = (object) array(
-                        'name' => $row->nama,
-                        'id' => $row->id_pegawai,
-                        'phone' => $row->no_telp);
-        }
+//        $count = 0;
+//        foreach ($query->result() as $row) {
+//            $employe['employe'][$count++] = (object) array(
+//                        'name' => $row->nama,
+//                        'id' => $row->id_pegawai,
+//                        'phone' => $row->no_telp);
+//        }
+        
+        $this->load->model('EmployeModel');
+        $employe=$this->EmployeModel->selectEmployee();
 
-        $this->load->view('employeView', $employe);
+        $this->load->view('EmployeView', $employe);
     }
 
 }

@@ -11,61 +11,33 @@
  *
  * @author User
  */
-class Employe extends CI_Model {
-
-    private $name;
-    private $id;
-    private $telphoneNumber;
-    private $city;
-    private $sex;
-    private $potitionWork;
-    private $status;
+class EmployeModel extends CI_Model {
 
     //put your code here
     Public function __construct() {
         parent::__construct();
-
-//        $query = $this->db->get("stud"); 
-//        $data['records'] = $query->result();
+        $this->load->model("CityModel");
     }
 
-    function setALL($rowResult) {
-        $this->load->database();
+    function selectEmployee() {
+        $query = $this->db->get("pegawai");
+        $data['records'] = $query->result();
 
-        $this->name = $rowResult->nama;
-//        echo 'nama sasa '.$this->name;
-        $this->id = $rowResult->id_pegawai;
-        $this->telphoneNumber = $rowResult->no_telp;
+        $employe['employe'][] = array();
+        $count = 0;
+        foreach ($query->result() as $row) {
+            
+            
+
+            
+            $employe['employe'][$count++] = (object) array(
+                        'name' => $row->nama,
+                        'id' => $row->id_pegawai,
+                        'city' => $this->CityModel->getCity($row->kota),
+                        'phone' => $row->no_telp);
+        }
+        
+        return $employe;
     }
-
-    function getName() {
-        return $this->name;
-    }
-
-    function getId() {
-        return $this->id;
-    }
-
-    function getTelphoneNumber() {
-        return $this->telphoneNumber;
-    }
-
-    function getCity() {
-        return $this->city;
-    }
-
-    function getSex() {
-        return $this->sex;
-    }
-
-    function getPotitionWork() {
-        return $this->potitionWork;
-    }
-
-    function getStatus() {
-        return $this->status;
-    }
-
-
 
 }
