@@ -7,8 +7,7 @@
     </head>
 
     <body> 
-        <a href = "<?php echo base_url(); ?>
-           index.php/stud/add_view">Add</a>
+        <a href = "/BekUpBackEnd/index.php/EmployeController/addEmployeView">Add</a>
 
         <table border = "1"> 
             <?php
@@ -21,8 +20,8 @@
             echo "<td>City</td>";
             echo "<td>Potition</td>";
             echo "<td>Kelamin</td>";
-            echo "<td>Edit</td>";
             echo "<td>Delete</td>";
+            echo "<td>Edit</td>";
             echo "<tr>";
             
             
@@ -35,10 +34,8 @@
                 echo "<td>" . $r->city . "</td>";
                 echo "<td>" . $r->potition . "</td>";
                 echo "<td>" . $r->sex . "</td>";
-                echo "<td><a href = '" . base_url() . "index.php/stud/edit/"
-                . $r->phone . "'>Edit</a></td>";
-                echo "<td><a href = '" . base_url() . "index.php/stud/delete/"
-                . $r->phone . "'>Delete</a></td>";
+                echo "<td><a href ='/BekUpBackEnd/index.php/EmployeController/deleteEmploye/".$r->id."'>Delete</a></td>";
+                echo "<td><a href = '/BekUpBackEnd/index.php/EmployeController/editEmployeView/".$r->id."'>Edit</a></td>";
                 echo "<tr>";
             }
             ?>

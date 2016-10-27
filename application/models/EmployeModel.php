@@ -38,11 +38,73 @@ class EmployeModel extends CI_Model {
                         'id' => $row->id_pegawai,
                         'sex' => $this->SexModel->getSex($row->kelamin),
                         'potition' => $this->PotitionModel->getPotition($row->id_posisi),
+                        'status' => $row->status,
                         'city' => $this->CityModel->getCity($row->kota),
                         'phone' => $row->no_telp);
         }
 
         return $employe;
+    }
+
+    function selectEmployeeById( $idUser) {
+        $this->db->select("* ");
+        $this->db->from("pegawai");
+        $this->db->where("id_pegawai", $idUser);
+        $query = $this->db->get();
+
+        $employe['employe'][] = array();
+        $count = 0;
+        foreach ($query->result() as $row) {
+            $employe['employe'][$count++] = (object) array(
+                        'name' => $row->nama,
+                        'id' => $row->id_pegawai,
+                        'sex' => $this->SexModel->getSex($row->kelamin),
+                        'potition' => $this->PotitionModel->getPotition($row->id_posisi),
+                        'status' => $row->status,
+                        'city' => $this->CityModel->getCity($row->kota),
+                        'phone' => $row->no_telp);
+        }
+
+        return $employe;
+    }
+
+    function selectEmployeeByIdsd($idUser) {
+        $this->db->select("* ");
+        $this->db->from("pegawai");
+        $this->db->where("id_pegawai", $idUser);
+        $query = $this->db->get();
+
+        foreach ($query->result() as $row) {
+            return array(
+                'name' => $row->nama,
+                'id' => $row->id_pegawai,
+                'sex' => $this->SexModel->getSex($row->kelamin),
+                'potition' => $this->PotitionModel->getPotition($row->id_posisi),
+                'city' => $this->CityModel->getCity($row->kota),
+                'status' => $row->status,
+                'phone' => $row->no_telp);
+        }
+    }
+
+    function addEmploye($data) {
+        if ($this->db->insert("pegawai", $data)) {
+            return true;
+        }
+        return false;
+    }
+
+    function updateEmploye($data, $idUser) {
+        echo 'use id' . $idUser;
+        $this->db->set($data);
+        $this->db->where("id_pegawai", $idUser);
+        $this->db->update("pegawai", $data);
+    }
+
+    function deleteEmploye($idUser) {
+        if ($this->db->delete("pegawai", "id_pegawai = " . $idUser)) {
+            return true;
+        }
+        return false;
     }
 
 }
