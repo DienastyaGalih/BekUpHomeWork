@@ -23,7 +23,7 @@ class EmployeController extends CI_Controller {
      * display view to edit employee
      */
     public function editEmployeView() {
-        $this->load->model("CityModel");
+        
         $employe['employe'][] = array();
         $this->load->model('EmployeModel');
         $idUser = $this->uri->segment('3');
@@ -31,6 +31,7 @@ class EmployeController extends CI_Controller {
         $tp['employe'] = $employe['employe'][0];
         $this->load->helper('form');
         $this->load->view('EmployeEditView', $tp);
+        return;
     }
 
     /**
